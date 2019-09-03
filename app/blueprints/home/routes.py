@@ -3,4 +3,4 @@ from . import home
 
 @home.route('/')
 def index():
-    return "HOME"
+    return render_template('home/index.tpl')
