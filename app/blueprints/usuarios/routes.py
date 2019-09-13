@@ -11,6 +11,4 @@ def lista_usuario():
 def visualiza_usuario(id):
     dados = Usuario.query.filter_by(id = id).first()
     return render_template('usuarios/usuario_detalhes.tpl', dado = dados)
-@usuarios.route('/usuario/inserir)
-def registra_usuario():
-    
+
