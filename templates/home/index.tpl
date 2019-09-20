@@ -55,48 +55,32 @@
               >
                 <ul class="navbar-nav align-items-center">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.tpl">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                  </li>
+                    <a class="nav-link" href="/sobre">Sobre</a>
+                  </li>                  
                   <li class="nav-item">
-                    <a class="nav-link" href="services.html">services</a>
+                    <a class="nav-link" href="/contato">Contato</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog</a>
+		  <li class="nav-item">
+                    <a class="nav-link" href="/usuarios">Usuários</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a
-                      class="nav-link dropdown-toggle"
-                      href="blog.html"
-                      id="navbarDropdown"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Pages
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="project.html">project</a>
-                      <a class="dropdown-item" href="single-blog.html"
-                        >Single blog</a
-                      >
-                      <a class="dropdown-item" href="elements.html">Elements</a>
-                    </div>
+		  <li class="nav-item">
+                    <a class="nav-link" href="/registrar">Registre-se</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+		  <li class="nav-item">
+                    <a class="nav-link" href="/login">Fazer Login</a>
+                  </li>
+		  <li class="nav-item">
+                    <a class="nav-link" href="/livros">Livros</a>
+                  </li>
+		  <li class="nav-item">
+                    <a class="nav-link" href="/registrarlivro">Registrar livro</a>
                   </li>
                 </ul>
               </div>
-              <div class="social_icon d-none d-lg-block">
-                <a href="#"><i class="ti-facebook"></i></a>
-                <a href="#"><i class="ti-twitter-alt"></i></a>
-                <a href="#"><i class="ti-dribbble"></i></a>
-                <a href="#"><i class="ti-instagram"></i></a>
-              </div>
+              
             </nav>
           </div>
         </div>

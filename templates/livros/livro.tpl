@@ -1,11 +1,6 @@
 {% extends 'base.tpl' %}
-{% from 'bootstrap/form.html' import render_form %}
- 
-{% block title %} Registrar {% endblock %}
- 
 {% block content %}
-{{ super() }}
-<ul class="nav">
+	<ul class="nav">
 	  <li class="nav-item">
 	    <a class="nav-link" href="/">Home</a>
 	  </li>
@@ -31,23 +26,28 @@
               <a class="nav-link" href="/registrarlivro">Registrar livro</a>
             </li>  	  
 	</ul>
-<div class="container">
- <div class="row">
- {% with messages = get_flashed_messages(with_categories=true) %}
- <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
- {% if messages %}
- {% for category, message in messages %}
- <div class="alert alert-{{ category }} alert-dismissible" role="alert">
- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
- <!-- <strong>Title</strong> --> {{ message }}
- </div>
- {% endfor %}
-
- {% endif %}
- {% endwith %}
- <h1>Registre-se</h1>
- {{ render_form(form) }}
- </div>
-</div>
+	<h1> Lista de Livros </h1>
+	<table class="table">	
+	<tr>
+		<th> id</th>
+		<th>Titulo</th>
+		<th>Autor</th>
+		<th>ISBN</th>
+		<th>Ano</th>
+		<th>Editora</th>
+		<th>Sinopse</th>
+	<tr>
+	{%for dado in dados %}
+	<tr>
+		<td>{{dado.id}}</td>
+		<td>{{dado.titulo}}</td>
+		<td>{{dado.autor}}</td>
+		<td>{{dado.isbn}}</td>
+		<td>{{dado.ano}}</td>
+		<td>{{dado.editora}}</td>
+		<td>{{dado.sinopse}}</td>
+		<td><a href="/livro/{{dado.id}}"> Visualizar</a></td>
+	</tr>
+	{% endfor %}
+	</table>
 {% endblock %}
-

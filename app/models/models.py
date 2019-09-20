@@ -19,3 +19,19 @@ class Usuario(db.Model):
         self.nome = nome
         self.email = email
         self.password_hash = hash_my_password(password)
+
+class Livros(db.Model):
+    id= db.Column(db.Integer(), primary_key=True)
+    titulo= db.Column(db.String(100))
+    autor= db.Column(db.String(100))
+    isbn= db.Column(db.String(100))
+    ano= db.Column(db.String(4))
+    editora= db.Column(db.String(100))
+    sinopse= db.Column(db.String(500))    
+    def __init__(self,titulo, autor, isbn, ano, editora, sinopse):
+        self.titulo = titulo
+        self.autor = autor
+        self.isbn = isbn
+        self.ano = ano
+        self.editora = editora
+        self.sinopse = sinopse

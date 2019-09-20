@@ -13,18 +13,18 @@ def registrar_get():
 @auth.route('/registrar', methods=['POST'])
 def registrar_post():
     form = FormRegistro()
-    if form_validate_on_submit():
+    if form.validate_on_submit():
         try:
             novo_usuario=Usuario( nome = form.nome.data,
                                   email = form.email.data,
                                   password = form.password.data)
             db.session.add(novo_usuario)
-            db.sessio.commit()
+            db.session.commit()
             return redirect('/')
         except Exception as e:
             flash('Ferrou!' +str(e), 'danger')
     else:
-        flash('Dados invalidos!'+form.errors, 'danger')
+        flash('Dados invalidos!'+ str(form.errors) , 'danger')
     return redirect('/registrar')
 
 @auth.route('/login', methods=['GET'])

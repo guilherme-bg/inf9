@@ -24,9 +24,11 @@ def create_app():
     from .blueprints.auth import auth
     from .blueprints.home import home
     from .blueprints.usuarios import usuarios
+    from .blueprints.livros import livros
     app.register_blueprint(auth)
     app.register_blueprint(home)
     app.register_blueprint(usuarios)
+    app.register_blueprint(livros)
     return app
 
 @login_manager.user_loader
