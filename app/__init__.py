@@ -1,7 +1,7 @@
 from flask import Flask
 from config import app_config
 from flask_migrate import Migrate
-from app.models.models import db
+from app.models.models import db, Usuario
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 import os
@@ -33,4 +33,4 @@ def create_app():
 
 @login_manager.user_loader
 def load_user(user_id):
-    return Usuario.query.get(int(user_id)).first()
+    return Usuario.query.filter_by(id=int(user_id)).first()

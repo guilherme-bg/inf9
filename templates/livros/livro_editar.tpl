@@ -1,7 +1,7 @@
 {% extends 'base.tpl' %}
 {% from 'bootstrap/form.html' import render_form %}
  
-{% block title %} Registrar {% endblock %}
+{% block title %} Editar {% endblock %}
  
 {% block content %}
 {{ super() }}
@@ -45,7 +45,7 @@
 
  {% endif %}
  {% endwith %}
- <h1>Registrar Livro</h1>
+ <h1>Editar Livro</h1>
  {{ render_form(form) }}
  </div>
 </div>

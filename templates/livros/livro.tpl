@@ -47,6 +47,8 @@
 		<td>{{dado.editora}}</td>
 		<td>{{dado.sinopse}}</td>
 		<td><a href="/livro/{{dado.id}}"> Visualizar</a></td>
+		<td><a href="/livros/editar/{{dado.id}}"> Editar</a></td>
+		<td><a href="/livros/excluir/{{dado.id}}"> Deletar</a></td>
 	</tr>
 	{% endfor %}
 	</table>

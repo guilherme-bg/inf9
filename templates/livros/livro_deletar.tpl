@@ -1,7 +1,7 @@
 {% extends 'base.tpl' %}
 {% from 'bootstrap/form.html' import render_form %}
  
-{% block title %} Registrar {% endblock %}
+{% block title %} Deletar {% endblock %}
  
 {% block content %}
 {{ super() }}
@@ -31,23 +31,29 @@
               <a class="nav-link" href="/registrarlivro">Registrar livro</a>
             </li>  	  
 	</ul>
-<div class="container">
- <div class="row">
- {% with messages = get_flashed_messages(with_categories=true) %}
- <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
- {% if messages %}
- {% for category, message in messages %}
- <div class="alert alert-{{ category }} alert-dismissible" role="alert">
- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
- <!-- <strong>Title</strong> --> {{ message }}
- </div>
- {% endfor %}
+	<h1> Deletar o Livro </h1>
+	<table class="table">	
+	<tr>
+		<th> id</th>
+		<th>Titulo</th>
+		<th>Autor</th>
+		<th>ISBN</th>
+		<th>Ano</th>
+		<th>Editora</th>
+		<th>Sinopse</th>
+	<tr>
+	<tr>
+		<td>{{dado.id}}</td>
+		<td>{{dado.titulo}}</td>
+		<td>{{dado.autor}}</td>
+		<td>{{dado.isbn}}</td>
+		<td>{{dado.ano}}</td>
+		<td>{{dado.editora}}</td>
+		<td>{{dado.sinopse}}</td>
+	</tr>
+	</table>
+	<h2>Tem certeza que deseja excluir o livro?</h2>
+	<!--<form action="/livros/excluir/{{dado.id}}"><input type="submit" class="btn btn-danger" value="Deletar"/></form>-->
+	{{ render_form(form) }}
 
- {% endif %}
- {% endwith %}
- <h1>Registrar Livro</h1>
- {{ render_form(form) }}
- </div>
-</div>
 {% endblock %}
-

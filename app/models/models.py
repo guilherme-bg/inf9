@@ -10,7 +10,7 @@ def hash_my_password(p):
 def check_my_password(u, p):
     return argon2.verify(p, u.password_hash)
 
-class Usuario(db.Model):
+class Usuario(db.Model, UserMixin):
     id= db.Column(db.Integer(), primary_key=True)
     nome= db.Column(db.String(100))
     email= db.Column(db.String(100))

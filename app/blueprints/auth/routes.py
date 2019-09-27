@@ -47,6 +47,7 @@ def login_post():
                 return redirect('/login')
         except Exception as e:
             flash('Dados inválidos!2'+str(e),'danger')
+            return redirect('/login')
     else:
         flash('Dados invalidos' + str(form.errors), 'danger')
         return redirect('/login')
