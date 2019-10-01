@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import ForeignKey
 from passlib.hash import argon2
 from flask_login import UserMixin
 
@@ -27,11 +28,27 @@ class Livros(db.Model):
     isbn= db.Column(db.String(100))
     ano= db.Column(db.String(4))
     editora= db.Column(db.String(100))
-    sinopse= db.Column(db.String(500))    
-    def __init__(self,titulo, autor, isbn, ano, editora, sinopse):
+    sinopse= db.Column(db.String(500))
+    situacao= db.column(db.Boolean)    
+    def __init__(self,titulo, autor, isbn, ano, editora, sinopse, situacao):
         self.titulo = titulo
         self.autor = autor
         self.isbn = isbn
         self.ano = ano
         self.editora = editora
         self.sinopse = sinopse
+        self.situacao = situacao
+
+class Emprestimo(db.Model):
+    id= db.Column(db.Integer(), primary_key=True)
+    idUsuario= db.Column(db.Integer(), ForeignKey("usuario.id"))
+    idLivro= db.Column(db.Integer(), ForeignKey("livros.id"))
+    dataEmprestimo= db.Column(db.DateTime())
+    dataPrevista= db.Column(db.DateTime())
+    dataEfetiva= db.Column(db.DateTime())
+    def __init__(self, idUsuario, idLivro, dataEmprestimo, dataPrevista, dataEfetiva):
+        self.idUsuario = idUsuario
+        self.idLivro = idLivro
+        self.dataEmprestimo = dataEmprestimo
+        self.dataPrevista = dataPrevista
+        self.dataEfetiva = dataEfetiva
