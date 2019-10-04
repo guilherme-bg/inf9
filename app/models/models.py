@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
+from datetime import datetime, timedelta
 from passlib.hash import argon2
 from flask_login import UserMixin
 
@@ -11,11 +12,25 @@ def hash_my_password(p):
 def check_my_password(u, p):
     return argon2.verify(p, u.password_hash)
 
+PERIODO_EMPRESTIMO     = timedelta(days=7)
+DATA_ESTIMADA          = datetime.now()+PERIODO_EMPRESTIMO
+
+emprestimo = db.Table('emprestimos',
+                        db.Column('id',db.Integer,primary_key=True),
+                        db.Column('id_livro',db.Integer,db.ForeignKey('livros.id')),
+                        db.Column('id_usuario',db.Integer,db.ForeignKey('usuario.id')),
+                        db.Column('data_emprestimo',db.DateTime(),default=datetime.now()),
+                        db.Column('data_estimada',db.DateTime(),default=DATA_ESTIMADA),
+                        db.Column('data_devolucao',db.DateTime())
+                        )
+
+
 class Usuario(db.Model, UserMixin):
     id= db.Column(db.Integer(), primary_key=True)
     nome= db.Column(db.String(100))
     email= db.Column(db.String(100))
     password_hash=db.Column(db.String(80))
+    livro = db.relationship('Livros',secondary=emprestimo) #backref
     def __init__(self,password, email, nome):
         self.nome = nome
         self.email = email
@@ -29,7 +44,8 @@ class Livros(db.Model):
     ano= db.Column(db.String(4))
     editora= db.Column(db.String(100))
     sinopse= db.Column(db.String(500))
-    situacao= db.column(db.Boolean)    
+    status = db.Column(db.Integer,default=0) # 0=livre, 1=emprestado
+    usuario = db.relationship('Usuario',secondary=emprestimo) #backref
     def __init__(self,titulo, autor, isbn, ano, editora, sinopse, situacao):
         self.titulo = titulo
         self.autor = autor
@@ -39,16 +55,16 @@ class Livros(db.Model):
         self.sinopse = sinopse
         self.situacao = situacao
 
+# Relação Muitos-para-Muitos (ou Many-to-Many)
+
+"""
 class Emprestimo(db.Model):
-    id= db.Column(db.Integer(), primary_key=True)
-    idUsuario= db.Column(db.Integer(), ForeignKey("usuario.id"))
-    idLivro= db.Column(db.Integer(), ForeignKey("livros.id"))
-    dataEmprestimo= db.Column(db.DateTime())
-    dataPrevista= db.Column(db.DateTime())
-    dataEfetiva= db.Column(db.DateTime())
-    def __init__(self, idUsuario, idLivro, dataEmprestimo, dataPrevista, dataEfetiva):
-        self.idUsuario = idUsuario
-        self.idLivro = idLivro
-        self.dataEmprestimo = dataEmprestimo
-        self.dataPrevista = dataPrevista
-        self.dataEfetiva = dataEfetiva
+    __tablename__='emprestimos'
+    id = db.Column(db.Integer, primary_key=True)
+    id_livro
+    id_usuario
+"""    
+ 
+
+
+
