@@ -16,6 +16,7 @@
   </head>
   <body>
     <!-- Your page content -->
+    {% include 'nav.tpl' %}
     {% block content %}{% endblock %}
 
     {% block scripts %}
