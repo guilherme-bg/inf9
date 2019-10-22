@@ -1,5 +1,5 @@
 {% extends 'base.tpl' %}
-{% from 'bootstrap/form.html' import render_field %}
+{% import 'bootstrap/wtf.html' as wtf %}
 {% block title %} Registrar {% endblock %}
  
 {% block content %}
@@ -21,7 +21,7 @@
  <h1>Registrar empréstimo</h1>
 
 
-{{ render_field(form.livro) }}
+{{ wtf.quick_form(form) }}
  </div>
 </div>
 {% endblock %}
