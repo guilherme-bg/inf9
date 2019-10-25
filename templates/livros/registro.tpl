@@ -1,36 +1,11 @@
 {% extends 'base.tpl' %}
-{% from 'bootstrap/form.html' import render_form %}
+{% import 'bootstrap/wtf.html' as wtf %}
  
 {% block title %} Registrar {% endblock %}
  
 {% block content %}
 {{ super() }}
-<ul class="nav">
-	  <li class="nav-item">
-	    <a class="nav-link" href="/">Home</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/sobre">Sobre</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/contato">Contato</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/usuarios">Usuários</a>
-	  </li>
- 	  <li class="nav-item">
-	    <a class="nav-link" href="/registrar">Registre-se</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/login">Fazer Login</a>
-	  </li>
-	   <li class="nav-item">
-             <a class="nav-link" href="/livros">Livros</a>
-           </li>
-	   <li class="nav-item">
-              <a class="nav-link" href="/registrarlivro">Registrar livro</a>
-            </li>  	  
-	</ul>
+
 <div class="container">
  <div class="row">
  {% with messages = get_flashed_messages(with_categories=true) %}
@@ -46,7 +21,7 @@
  {% endif %}
  {% endwith %}
  <h1>Registrar Livro</h1>
- {{ render_form(form) }}
+ {{ wtf.quick_form(form) }}
  </div>
 </div>
 {% endblock %}

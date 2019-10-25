@@ -19,9 +19,26 @@
  {% endif %}
  {% endwith %}
  <h1>Registrar empréstimo</h1>
-
-
-{{ wtf.quick_form(form) }}
+<form action="{{url_for('emprestimos.emprestimo_cadastro_post')}}" method="post">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Livros</h3>
+  </div>
+  <div class="panel-body">
+    {{ form.livro }}
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Usuários</h3>
+  </div>
+  <div class="panel-body">
+    {{ form.usuario }}
+  </div>
+</div>
+{{ form.csrf_token }}
+<button class= "btn btn-succes">Enviar</button<
+</form>
  </div>
 </div>
 {% endblock %}

@@ -1,33 +1,9 @@
 {% extends 'base.tpl' %}
 {% block content %}
-	<ul class="nav">
-	  <li class="nav-item">
-	    <a class="nav-link" href="/">Home</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/sobre">Sobre</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/contato">Contato</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/usuarios">Usuários</a>
-	  </li>
- 	  <li class="nav-item">
-	    <a class="nav-link" href="/registrar">Registre-se</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/login">Fazer Login</a>
-	  </li>
-	   <li class="nav-item">
-             <a class="nav-link" href="/livros">Livros</a>
-           </li>
-	   <li class="nav-item">
-              <a class="nav-link" href="/registrarlivro">Registrar livro</a>
-            </li>  	  
-	</ul>
+	{{ super() }}
 	<h1> Detalhes do Livro </h1>
-	<table class="table">	
+	<table class="table table-bordered">
+	<thead>	
 	<tr>
 		<th> id</th>
 		<th>Titulo</th>
@@ -37,6 +13,8 @@
 		<th>Editora</th>
 		<th>Sinopse</th>
 	<tr>
+	</thead>
+	<tbody>
 	<tr>
 		<td>{{dado.id}}</td>
 		<td>{{dado.titulo}}</td>
@@ -46,5 +24,6 @@
 		<td>{{dado.editora}}</td>
 		<td>{{dado.sinopse}}</td>
 	</tr>
+	</tbody>
 	</table>
 {% endblock %}

@@ -1,38 +1,12 @@
 {% extends 'base.tpl' %}
-{% from 'bootstrap/form.html' import render_form %}
+{% import 'bootstrap/wtf.html' as wtf %}
  
 {% block title %} Deletar {% endblock %}
  
 {% block content %}
 {{ super() }}
-<ul class="nav">
-	  <li class="nav-item">
-	    <a class="nav-link" href="/">Home</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/sobre">Sobre</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/contato">Contato</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/usuarios">Usuários</a>
-	  </li>
- 	  <li class="nav-item">
-	    <a class="nav-link" href="/registrar">Registre-se</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/login">Fazer Login</a>
-	  </li>
-	   <li class="nav-item">
-             <a class="nav-link" href="/livros">Livros</a>
-           </li>
-	   <li class="nav-item">
-              <a class="nav-link" href="/registrarlivro">Registrar livro</a>
-            </li>  	  
-	</ul>
 	<h1> Deletar o Livro </h1>
-	<table class="table">	
+	<table class="table table-bordered">	
 	<tr>
 		<th> id</th>
 		<th>Titulo</th>
@@ -54,6 +28,6 @@
 	</table>
 	<h2>Tem certeza que deseja excluir o livro?</h2>
 	<!--<form action="/livros/excluir/{{dado.id}}"><input type="submit" class="btn btn-danger" value="Deletar"/></form>-->
-	{{ render_form(form) }}
+	{{ wtf.quick_form(form) }}
 
 {% endblock %}
