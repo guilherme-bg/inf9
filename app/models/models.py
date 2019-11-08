@@ -30,7 +30,8 @@ class Usuario(db.Model, UserMixin):
     nome= db.Column(db.String(100))
     email= db.Column(db.String(100))
     password_hash=db.Column(db.String(80))
-    livro = db.relationship('Livros',secondary=emprestimo) #backref
+    livro = db.relationship('Livros',secondary=emprestimo, backref=db.backref('emprestado', lazy='dynamic')) #backref
+    #usuario = db.relationship('Livro', secondary=emprestimo, backref=db.backref('emprestado', lazy='dynamic'))
     def __init__(self,password, email, nome):
         self.nome = nome
         self.email = email
@@ -45,7 +46,7 @@ class Livros(db.Model):
     editora= db.Column(db.String(100))
     sinopse= db.Column(db.String(500))
     status = db.Column(db.Integer,default=0) # 0=livre, 1=emprestado
-    usuario = db.relationship('Usuario',secondary=emprestimo) #backref
+    #usuario = db.relationship('Usuario',secondary=emprestimo) #backref
     def __init__(self,titulo, autor, isbn, ano, editora, sinopse, situacao):
         self.titulo = titulo
         self.autor = autor
