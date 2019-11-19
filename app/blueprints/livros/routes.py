@@ -9,7 +9,6 @@ from flask_login import login_required, login_user, logout_user
 @login_required
 def lista_livro():
     dados = Livros.query.all()
-    print(dados)
     return render_template('livros/livro.tpl', dados=dados)
 
 @livros.route('/livro/<int:id>')
@@ -35,7 +34,8 @@ def registrar_post():
                                   isbn = form.isbn.data,
                                   ano = form.ano.data,
                                   editora = form.editora.data,
-                                  sinopse = form.sinopse.data)
+                                  sinopse = form.sinopse.data,
+                                  status = 0)
             db.session.add(novo_livro)
             db.session.commit()
             return redirect('/')
@@ -43,7 +43,7 @@ def registrar_post():
             flash('Ferrou!' +str(e), 'danger')
     else:
         flash('Dados invalidos!'+ str(form.errors) , 'danger')
-    return redirect('/registrar')
+    return redirect('/registrarlivro')
 
 @livros.route('/livros/editar/<int:_id_>', methods=['GET'])
 @login_required

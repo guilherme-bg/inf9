@@ -25,12 +25,7 @@
 		<td>{{dado.editora}}</td>
 		<td>{{dado.sinopse}}</td>
 		<td>{{dados_emprestimo.data_emprestimo}}</td>
-		<td>{{dados_emprestimo.data_estimada}}</td>
-                {% if dado.status == 1 %}
-                    <td><a href="/devolveremprestimo/{{dado.id}}" class='btn btn-danger'> Devolver</a></td>
-                {% else %}
-                    <td><a href="/registraremprestimo/{{dado.id}}" class='btn btn-primary'> Emprestar</a></td>
-		{% endif %}
+		<td>{{dados_emprestimo.data_estimada}}</td>                
 	</tr>
 	{% endfor %}
 	</table>

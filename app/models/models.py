@@ -47,14 +47,14 @@ class Livros(db.Model):
     sinopse= db.Column(db.String(500))
     status = db.Column(db.Integer,default=0) # 0=livre, 1=emprestado
     #usuario = db.relationship('Usuario',secondary=emprestimo) #backref
-    def __init__(self,titulo, autor, isbn, ano, editora, sinopse, situacao):
+    def __init__(self,titulo, autor, isbn, ano, editora, sinopse, status):
         self.titulo = titulo
         self.autor = autor
         self.isbn = isbn
         self.ano = ano
         self.editora = editora
         self.sinopse = sinopse
-        self.situacao = situacao
+        self.status = status
 
 # Relação Muitos-para-Muitos (ou Many-to-Many)
 

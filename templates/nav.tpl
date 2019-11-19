@@ -24,7 +24,7 @@
 	<li class="active"><a class="nav-link" href="/registrarlivro">Registrar livro</a></li>
 	<li class="active"><a class="nav-link" href="/livros">Livros</a></li>
 	<li class="active"><a class="nav-link" href="/registraremprestimo">Registrar empréstimo</a></li>
-	<li class="active"><a class="nav-link" href="/emprestimos">Empréstimos</a></li>
+	<li class="active"><a class="nav-link" href="/livrosemprestimos">Empréstimos</a></li>
       </ul>      
       </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
