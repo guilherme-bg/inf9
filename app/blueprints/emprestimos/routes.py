@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, request, Flask, url_for
 from .forms import FormEmprestimo
 from . import emprestimos
-from ... import db
+from ... import db, mail
 from ...models.models import Livros, Usuario, emprestimo
 from flask_login import login_required, login_user, logout_user
 from datetime import datetime
@@ -10,28 +10,12 @@ from string import Template
 from flask_mail import Mail, Message
 from flask_bootstrap import Bootstrap
 
-app = Flask(__name__)
-
-notification_mail_settings = {
-    "MAIL_SERVER": 'smtp.gmail.com',
-    "MAIL_PORT": 465,
-    "MAIL_USE_TLS": False,
-    "MAIL_USE_SSL": True,
-    "MAIL_USERNAME": 'patinhas.douradas.adocoes@gmail.com',
-    "MAIL_PASSWORD": 'rabodecoelho'
-}
-
-app.config.update(notification_mail_settings)
-mail = Mail(app)
-bootstrap = Bootstrap(app)
-
 def envia_email(_email_):
     msg = Message(subject="[inf9] Email de emprestimo",
                       sender='patinhas.douradas.adocoes@gmail.com',
                       recipients=_email_, 
-                      body='Ola' )
+                      body='Você registrou um empréstimo!!!' )
     print(_email_, type(_email_))
-    #msg.html = render_template('emails/notificacao.tpl')
     try:
         mail.send(msg)
         flash('Enviou!', 'success')
@@ -57,13 +41,12 @@ def emprestimo_cadastro_post():
         livro   = Livros.query.filter_by(id=L).first()
         print(usuario.email)
         ok = envia_email([usuario.email])
-        if ok:
+        if(ok):
             livro.emprestado.append(usuario)
-            livro.status = 1
+            livro.status = 1        
             db.session.add(livro)
             db.session.commit()
-        else:
-            return redirect(url_for('emprestimos.emprestimo_cadastro_get'))        
+        return redirect(url_for('emprestimos.emprestimo_cadastro_get'))        
         flash('Emprestado para o usuario [{}] o livro [{}] do autor [{}].'.format(usuario.nome,livro.titulo,livro.autor),'success')
     except Exception as e:
         flash('NÃO emprestado para o usuario {} o livro {} do autor {}.'.format(usuario.nome,livro.titulo,livro.autor), 'danger')

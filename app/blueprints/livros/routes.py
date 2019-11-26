@@ -6,7 +6,6 @@ from ...models.models import Livros
 from flask_login import login_required, login_user, logout_user
 
 @livros.route('/livros')
-@login_required
 def lista_livro():
     dados = Livros.query.all()
     return render_template('livros/livro.tpl', dados=dados)
