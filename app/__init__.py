@@ -42,11 +42,13 @@ def create_app():
     from .blueprints.usuarios import usuarios
     from .blueprints.livros import livros
     from .blueprints.emprestimos import emprestimos
+    from .blueprints.mapa import mapa
     app.register_blueprint(auth)
     app.register_blueprint(home)
     app.register_blueprint(usuarios)
     app.register_blueprint(livros)
     app.register_blueprint(emprestimos)
+    app.register_blueprint(mapa)
     return app
 
 @login_manager.user_loader
