@@ -21,7 +21,7 @@
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 
 	<script>
-		var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+		var mymap = L.map('mapid').setView([-29.943441, -51.097447], 18);
 		 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
